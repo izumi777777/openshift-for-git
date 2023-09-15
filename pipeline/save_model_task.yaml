@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: save-model
+spec:
+  workspaces:
+    - name: output
+  params:
+    - name: model-type
+      description: model type:"resnet50","xception"
+      type: string
+      default: "resnet50"
+  steps:
+    - name: save
+      image: tensorflow/tensorflow
+      workingDir: '$(workspaces.output.path)'
+      command:
+        - python3
+      args:
+        - ic-sample-api/scripts/save_model.py
+        - $(params.model-type)
