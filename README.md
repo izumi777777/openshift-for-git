@@ -19,4 +19,4 @@ working `oc` command line environment connected to your cluster already:
 `$ oc new-app centos/nginx-112-centos7~https://github.com/sclorg/nginx-ex`
 
 
-tes
+test
